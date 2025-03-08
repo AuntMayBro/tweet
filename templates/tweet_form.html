@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    makeTweet
+{% endblock %}
+  
+
+{% block content %}
+
+{% comment %} <h1 class="text-center mt-4">Welcome to DoTweet</h1> {% endcomment %}
+
+<h2 class="text-center mt-4">
+    {% if form.instance.pk %}Edit Tweet 
+    {% else %} Create Tweet
+    {% endif %}
+</h1>
+
+{% comment %} <div class="div-center">
+    <form class="form"  method="post" enctype="multipart/form-data">
+        {{ form.as_p }}
+    </form>
+</div> {% endcomment %}
+
+<div class="d-flex justify-content-center">
+    <div class="col-md-6">
+        <form method="post" enctype="multipart/form-data" class="card p-4 shadow">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <div class="text-center mt-3">
+                <button type="submit" class="btn btn-primary">Post Tweet</button>
+                <a href="{% url 'tweet_list' %}" class="btn btn-warning">Back</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
