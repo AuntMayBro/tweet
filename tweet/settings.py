@@ -134,3 +134,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+
+LOGIN_URL = '/accounts/login'
+LOGIN_REDIRECT_URL = '/dotweet'
+LOGOUT_REDIRECT_URL = '/dotweet'

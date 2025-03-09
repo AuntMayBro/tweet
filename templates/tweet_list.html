@@ -3,7 +3,6 @@
 {% block title %}
     doTweet
 {% endblock %}
-  
 
 {% block content %}
 <h1 class="text-center mt-4">Welcome to DoTweet</h1>
@@ -12,15 +11,51 @@
 
 <div class = "container row gap-4">
     {% for tweet in tweets %}
-    <div class="card" style="width: 18rem;">
-        <img src="{{tweet.photo.url}}" class="card-img-top" alt="...">
+
+      <div class="card" style="width: 18rem; position: relative;">
+        <img src="{{ tweet.photo.url }}" class="card-img-top" alt="#">
         <div class="card-body">
-          <h5 class="card-title">{{tweet.user.username}}</h5>
-          <p class="card-text">{{tweet.text}}</p>
-          <a href="{% url 'tweet_edit' tweet.id %}" class="btn btn-primary">Edit</a>
-          {% comment %} <a href="{% url 'tweet_delete' tweet_id %}" class="btn btn-danger">Delete</a> {% endcomment %}
+            <h5 class="card-title">{{ tweet.user.username }}</h5>
+            <p class="card-text">{{ tweet.text }}</p>
+            
+            <a href="{% url 'tweet_edit' tweet.id %}" class="btn btn-primary" >Edit</a>
+            <a href="{% url 'tweet_delete' tweet.id %}" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" >Delete</a>
+            
+            
+            
+            {% comment %} popup that will assure that you want to delete your tweet {% endcomment %}
+            
+            <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body text-center">
+                          Are you sure you want to delete this tweet?
+                      </div>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                          <!-- Delete Form -->
+                          <form method="POST" action="{% url 'tweet_delete' tweet.id %}">
+                              {% csrf_token %}
+                              <button type="submit" class="btn btn-danger">Yes, Delete</button>
+                          </form>
+                      </div>
+                  </div>
+              </div>
+          </div>
         </div>
+
+        
+        <p class="text-muted small position-absolute bottom-0 end-0 m-4 text-end" style="font-size: 0.7rem;">
+          {{ tweet.created_at|date:"M d, Y H:i" }}
+        </p>
       </div>
+      
+
+      
     {% endfor %}
 </div>
 {% endblock %}
