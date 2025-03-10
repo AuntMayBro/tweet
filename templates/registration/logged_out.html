@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% comment %} {% block content %}
+<h1 class="text-center mt-4">Logged_out</h1>
+
+<p>You are Logged_out <a href="{% url "login" %}">Login </a> </p>
+{% endblock %} {% endcomment %}
+
+{% block content %}
+<div class="container mt-5 text-center">
+    <div class="card shadow-lg p-4 mx-auto" style="max-width: 400px;">
+        <h2 class="mb-3">Logged Out</h2>
+        <p>You have successfully logged out.</p>
+        <a href="{% url 'login' %}" class="btn btn-primary mt-2">Login Again</a>
+    </div>
+</div>
+{% endblock %}
