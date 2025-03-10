@@ -86,6 +86,9 @@ DATABASES = {
         'PASSWORD': 'bagri',
         'HOST': 'localhost',  # or your remote database host
         'PORT': '3306',  # default MySQL port
+        'OPTIONS': {
+            'autocommit': True,
+        },
     }
 }
 
