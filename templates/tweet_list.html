@@ -75,8 +75,8 @@
 
                     {% if tweet.user == user %}
                     <div class="mt-auto d-flex justify-content-between">
-                        <a href="{% url 'tweet_edit' tweet.id %}" class="btn btn-primary btn-sm">Edit</a>
-                        <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal{{ tweet.id }}">Delete</button>
+                        <a href="{% url 'tweet_edit' tweet.id %}" class="btn btn-primary ">Edit</a>
+                        <button class="btn btn-danger " data-bs-toggle="modal" data-bs-target="#deleteModal{{ tweet.id }}">Delete</button>
                     </div>
                     {% endif %}
                 </div>

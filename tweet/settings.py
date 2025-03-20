@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-2j954q$r37##v3g!or3wuwvt%k+b85cn2m-+d8j!c@9=9j0u*2
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['tweet.vercel.app']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -51,7 +51,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'tweet.urls'
@@ -87,7 +86,7 @@ DATABASES = {
         'HOST': 'localhost',  # or your remote database host
         'PORT': '3306',  # default MySQL port
         'OPTIONS': {
-            'autocommit': True,
+            'charset': 'utf8mb4',
         },
     }
 }
